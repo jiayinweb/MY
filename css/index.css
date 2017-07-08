@@ -1,0 +1,44 @@
+
+
+html{ font-size: 100px; }
+
+.navbar{ margin-bottom: 0; background-color: rgb(200,200,200);}
+.navbar-header{ margin-right: 10%; }
+.navbar-default .navbar-brand{ font-size: 30px; font-weight: bold; color: #563d7c; }
+.navbar-default{ border: none; border-radius: 0;}
+.navbar-default .navbar-nav>li>a{ color: #563d7c; font-size: 16px; font-weight: bold;
+ font-family: "微软雅黑";}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover{ background-color: #f8f8f8; color:  #764d7c; border-bottom: 2px
+ solid red; }
+
+ .navbar-right img{ width: 25px; height: 25px; border-radius: 10px;}
+.wechat{ position: absolute; top: 50px; right: 50px; z-index: 20; width: 200px; display: none;}
+
+.workshow{ text-align: center; padding: 5% 0 5% 0; border: 1px solid #bbb; margin: 20px 40px;}
+.workshow img{ width: 80%; transition:transform 1s;}
+.workshow img:hover{ transform:scale(1.1,1.1); cursor: pointer;}
+.app_img{ padding-top: 7%; padding-bottom: 3%}
+.app_img img:hover{ transform:translateX(-8%) translateY(-18%);}
+.label{ display: inline-block; margin-top: 6%; }
+.project{ color: slateblue; font-weight: bold;}
+.project1{ margin-top: 70px; }
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, 
+.thumbnail>img{ width: 100%; height: 100%; }
+.banner_h3 h3{ line-height: 100px; font-weight: bold; color: #563d7c; margin: 0;}
+
+.bottom{ border-top: 1px solid #bbb; margin-top: 50px; background-color: #eee; }
+.b_label{ text-align: center; }
+.b_label span{ margin: 20px 0; line-height: 3;}
+.b_label h3{ font-size: 18px; float: left; }
+
+
+
+
+
+
+
+
+
+

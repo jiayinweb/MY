@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+#box1{ width:300px; height:200px; position:relative; top:100px; left:100px;}
+#box1 img{ width:100%;}
+#box1 span{ width:50px; height:50px; position:absolute; top:0; left:0; background:rgba(255,0,0,.4); cursor:move; display:none;}
+#box2{ width:150px; height:150px; overflow:hidden; position:absolute; top:100px; left:500px;}
+#box2 img{ position:absolute; top:0; left:0; display:none;}
+</style>
+
+</head>
+
+<body>
+<div id="box1">
+	<img src="2.jpg" />
+    <span id="zoom"></span>
+</div>
+<div id="box2">
+	<img src="2.jpg" />
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.min.js"></script>
+
+<script>
+
+
+$("#box1").mousemove(function(ev){
+	var l=ev.pageX-$(this).offset().left-$("#zoom").width()/2;
+	var t=ev.pageY-$(this).offset().top-$("#zoom").height()/2;
+	if(l<0){
+		l=0;
+	};
+	if(t<0){
+		t=0;	
+	};
+	var max_l=$(this).width()-$("#zoom").width();
+	var max_t=$(this).height()-$("#zoom").height();
+	if(l>max_l){
+		l=max_l;	
+	};
+	if(t>max_t){
+		t=max_t;	
+	};
+	$("#zoom").show().css({"top":t,"left":l});
+	$("#box2 img").show().css({"top":-t*3,"left":-l*3});
+	//$("#box2").show().css({"top":t,"left":l});
+});
+
+$("#box1").mouseleave(function(ev){
+	$("#zoom").hide();
+	$("#box2 img").hide();
+});
+
+</script>

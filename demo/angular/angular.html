@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		a{ display:block; width:200px; height:50px; line-height:50px; color:#fff; font-size:24px; text-decoration:none; position:absolute; left:2%; top:2%; background-color:#D43F52; text-align:center; border-radius:8px;}
+		*{ margin: 0; padding: 0 }
+		body{ width: 300px; margin: 50px auto; border: 2px solid #eee; padding: 10px 0; }
+		ul{ background-color: #eee;}
+		li{ list-style: none; margin-bottom: 10px; background-color: #fff;}
+		.top{ padding-bottom: 15px; border-bottom: 1px solid #eee; margin-bottom: 10px; padding: 10px 10px;}
+		.bot{ padding: 10px 10px; }
+		.place{ font-size: 16px; line-height: 16px; }
+		.place-true{ color: red; }
+		.write{ margin-right: 30px; float: right; font-size: 16px; line-height: 16px; }
+		.del{ float: right; font-size: 16px; line-height: 16px; margin-right: 10px; }
+		.box{ padding: 20px; border: 1px solid #bbb; position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto; width: 200px; height: 100px; background-color: #eee;}
+	</style>
+</head>
+<body ng-app="myApp" ng-controller="myContrl">
+<a href="../../index.html">返回首页</a>
+<ul>
+	<li ng-repeat="item in arr">
+		<div class="top">
+			<span class="place place-{{ item.bol }}"  ng-click="choise($index)">{{ item.bol?"默认地址":"设为默认" }}</span>
+			<span class="del" ng-click="del($index)">删除</span>
+			<span class="write" ng-click="edit($index)">编辑</span>
+		</div>
+		<div class="bot">
+			<p>{{ item.name }}&nbsp&nbsp{{ item.tel }}</p>
+			<p>{{ item.ads }}</p>
+		</div>
+	</li>
+</ul>
+<div class="box" ng-show="showing">
+	<input type="text" name="" ng-model="name">
+	<input type="text" name="" ng-model="tel">
+	<input type="text" name="" ng-model="ads"><br>
+	<button ng-click="finish($index)">完成</button>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="angular/angular.js"></script>
+<script type="text/javascript">
+	var app=angular.module("myApp",[]);
+	app.controller("myContrl",function($scope){
+		$scope.showing=false;
+		$scope.arr=[
+			{name:"Lily",tel:"1111111",ads:"美国",bol:true},
+			{name:"luce",tel:"222222",ads:"德国",bol:false},
+			{name:"dive",tel:"333333",ads:"法国",bol:false},
+			{name:"blus",tel:"44444",ads:"英国",bol:false},
+			{name:"akali",tel:"555555",ads:"意大利",bol:false},
+		];
+		$scope.choise=function(index){
+			var temp=$scope.arr[index];
+			$scope.arr.splice(index,1);
+			$scope.arr.unshift(temp);
+			$scope.arr.forEach(function(item){
+				item.bol=false;
+			});
+			$scope.arr[0].bol=true;
+		};
+		$scope.del=function(index){
+			$scope.arr.splice(index,1);
+			if(index==0){
+				$scope.arr[0].bol=true;
+			}
+		};
+		$scope.edit=function(index){
+			
+			//点击编辑弹框出现
+			$scope.showing=true;
+			$scope.name=$scope.arr[index].name;
+			$scope.tel=$scope.arr[index].tel;
+			$scope.ads=$scope.arr[index].ads;
+
+			//存储index
+			$scope.currentIndex=index;
+		};
+		$scope.finish=function(){
+			$scope.showing=false;
+			$scope.arr[$scope.currentIndex].name=$scope.name;
+			$scope.arr[$scope.currentIndex].tel=$scope.tel;
+			$scope.arr[$scope.currentIndex].ads=$scope.ads;
+		}
+		
+	});
+</script>
+
